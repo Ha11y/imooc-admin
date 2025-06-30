@@ -1,17 +1,20 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
 
-const routes = [
+// 公开路由表
+const publicRoutes = [
   {
     path: '/',
-    name: 'home',
-    component: HomeView
+    component: () => import('@/Layout/LayoutIndex.vue')
+  },
+  {
+    path: '/login',
+    component: () => import('@/views/loginComponent/indexVue.vue')
   }
 ]
 
 const router = createRouter({
   history: createWebHashHistory(),
-  routes
+  routes: publicRoutes
 })
 
 export default router
