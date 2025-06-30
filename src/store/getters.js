@@ -1,0 +1,14 @@
+import variables from '@/styles/variables.module.scss'
+
+const getters = {
+  token: (state) => {
+    return state.user.token
+  },
+  userInfo: (state) => state.user.userInfo,
+  hasUserInfo: (state) => {
+    return JSON.stringify(state.user.userInfo) !== '{}'
+  },
+  cssVar: (state) => variables,
+  sidebarOpened: (state) => state.app.sidebarOpened
+}
+export default getters
