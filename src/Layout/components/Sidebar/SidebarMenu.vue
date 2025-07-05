@@ -5,6 +5,7 @@ import { filterRoutes, generateMenu } from '@/utils/route'
 import { computed } from 'vue'
 // import store from '@/store'
 import SidebarItem from '@/Layout/components/Sidebar/SidebarItem.vue'
+// import MenuItem from './MenuItem.vue'
 // import { filter } from 'core-js/core/array'
 const router = useRouter()
 const routes = computed(() => {
@@ -32,8 +33,7 @@ const activeMenu = computed(() => {
     router
   >
     <!-- 子集 menu 菜单 -->
-    <sidebar-item v-for="item in routes" :key="item.path" :route="item">
-    </sidebar-item>
+    <sidebar-item v-for="item in routes" :key="item.path" :route="item"></sidebar-item>
   </el-menu>
 </template>
 

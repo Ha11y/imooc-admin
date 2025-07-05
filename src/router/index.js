@@ -5,6 +5,7 @@ const privateRoutes = [
     path: '/user',
     redirect: '/user/manage',
     component: LayoutIndex,
+    name: 'user',
     meta: {
       title: 'user',
       icon: 'personnel'
@@ -50,7 +51,7 @@ const privateRoutes = [
         name: 'profile',
         component: () => import('@/views/profile/index.vue'),
         meta: {
-          title: '个人中心'
+          title: 'user'
         }
       },
       {
@@ -123,8 +124,8 @@ const publicRoutes = [
         icon: 'el-icon-user',
         component: () => import('@/views/profile/index.vue'),
         meta: {
-          title: '个人中心',
-          icon: 'el-icon-user'
+          title: 'profile',
+          icon: 'personnel'
         }
       },
       //
