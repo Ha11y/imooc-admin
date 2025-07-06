@@ -1,12 +1,13 @@
 <script setup>
 import {} from 'vue'
 import SidebarMenu from './SidebarMenu.vue'
+const logoHeight = 44
 </script>
 
 <template>
   <div class=" ">
     <div class="logo-container">
-      <el-avatar size="44" shape="square" src=""> </el-avatar>
+      <el-avatar :size="logoHeight" shape="square" src="https://m.imooc.com/static/wap/static/common/img/logo-small@2x.png"> </el-avatar>
       <h2 class="logo-title" v-if="$store.getters.sidebarOpened">imooc-admin</h2>
     </div>
     <el-scrollbar>
@@ -17,7 +18,7 @@ import SidebarMenu from './SidebarMenu.vue'
 
 <style lang="scss" scoped>
 .logo-container {
-  height:44px;
+  height:v-bind(logoHeight)+ 'px';
   padding:10px 0 22px 0;
   display:flex;
   align-items:center;

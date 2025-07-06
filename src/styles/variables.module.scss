@@ -9,7 +9,7 @@ $subMenuBg: #1f2d3d;
 $subMenuHover: #001528;
 $hideSideBarWidth: 50px;
 $sideBarWidth: 210px;
-
+$sdieBarDurations:0.28s;
 :export {
     menuText: $menuText;
     menuActiveText:$menuActiveText;
@@ -20,4 +20,5 @@ $sideBarWidth: 210px;
     subMenuHover: $subMenuHover;
     sideBarWidth: $sideBarWidth;
     hideSideBarWidth:$hideSideBarWidth;
+    sdieBarDurations:$sdieBarDurations;
 }
