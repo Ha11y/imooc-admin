@@ -1,0 +1,19 @@
+<script>
+const messages = {
+  en:{
+    msg:'hello world',
+  },
+  zh:{
+    msg:'大师傅似的'
+  }
+  
+}
+let locale= 'en'
+function t(key){
+  return messages[locale][key]
+}
+//修改locale 重新调用t 获取最新值
+
+let msg = t('msg')
+console.log(msg)
+</script>

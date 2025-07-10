@@ -1,5 +1,5 @@
 <template>
-  <div class="">个人中心</div>
+  <div class="">个人信息</div>
 </template>
 
 <script setup>
