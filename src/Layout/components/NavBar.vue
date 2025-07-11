@@ -2,6 +2,7 @@
 import { useStore } from 'vuex'
 import Hamburger from '@/components/Hamburger/index.vue'
 import Breadcrumb from '@/components/Breadcrumb/index.vue'
+import LangSelect from '@/components/LangSelect/index.vue'
 const store = useStore()
 const logout = () => {
   store.dispatch('user/logout')
@@ -16,7 +17,9 @@ const logout = () => {
     <div class="breadcrumb-container">
       <Breadcrumb></Breadcrumb>
     </div>
+
     <div class="right-menu">
+      <LangSelect class="right-menu-item hover-effect"></LangSelect>
       <el-dropdown class="avatar-container">
         <div class="avatar-wrapper">
           <el-avatar
@@ -62,8 +65,8 @@ const logout = () => {
       background: rgba(0, 0, 0, 0.1);
     }
   }
-  .breadcrumb-container{
-    float:left;
+  .breadcrumb-container {
+    float: left;
   }
 }
 .right-menu {
@@ -73,6 +76,16 @@ const logout = () => {
   padding-right: 16px;
   ::v-deep .avatar-container {
     cursor: pointer;
+  }
+  ::v-deep .right-menu-item {
+    display: inline-block;
+    padding: 0 18px 0 0;
+    font-size: 24px;
+    color: #5a5e66;
+    vertical-align: text-bottom;
+    &.hover-effect {
+      cursor: pointer;
+    }
   }
   ::v-deep .avatar-container {
     cursor: pointer;

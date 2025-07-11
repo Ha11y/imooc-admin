@@ -14,7 +14,7 @@ const logoHeight = 44
       >
       </el-avatar>
       <h2 class="logo-title" v-if="$store.getters.sidebarOpened">
-        {{ $t('msg.test') }}
+        imooc-admin
       </h2>
     </div>
     <el-scrollbar>
