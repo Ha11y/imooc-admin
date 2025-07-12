@@ -1,6 +1,11 @@
 <script setup>
 import SvgIcon from '@/components/SvgIcon'
-const handleSetTheme = (theme) => {}
+import SelectColor from './components/SelectColor.vue'
+import { ref } from 'vue'
+const modelValue = ref(false)
+const handleSetTheme = (theme) => {
+  modelValue.value = true
+}
 </script>
 
 <template>
@@ -25,7 +30,9 @@ const handleSetTheme = (theme) => {}
   </el-dropdown>
 
   <!-- 弹出层 -->
-  <div></div>
+  <div>
+    <SelectColor v-model="modelValue"> </SelectColor>
+  </div>
 </template>
 
 <style lang="scss" scoped>

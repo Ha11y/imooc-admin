@@ -46,6 +46,7 @@ export default {
     themeChange: 'Theme Change'
   },
   universal: {
+    title: 'remote',
     confirm: 'confirm',
     cancel: 'cancel'
   },

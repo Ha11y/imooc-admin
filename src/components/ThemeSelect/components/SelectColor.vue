@@ -1,5 +1,7 @@
 <script setup>
 import { defineProps, ref, defineEmits } from 'vue'
+import { useStore } from 'vuex'
+import { generateNewStyle, writeNewStyle } from '@/utils/theme'
 const predefineColors = [
   '#ff4500',
   '#ff8c00',
@@ -16,6 +18,7 @@ const predefineColors = [
   'hsla(209, 100%, 56%, 0.73)',
   '#c7158577'
 ]
+const store = useStore()
 const emits = defineEmits(['update:modelValue'])
 defineProps({
   modelValue: {
@@ -26,11 +29,18 @@ defineProps({
 const closed = () => {
   emits('update:modelValue', false)
 }
-const confirm = () => {
+const confirm = async () => {
+  // 获取主题色
+  const newStyleText = await generateNewStyle(mColor.value)
+  // 写入最新主题色
+  writeNewStyle(newStyleText)
+  // 保存最新的主题色
+  store.commit('theme/setMainColor', mColor.value)
+  // 关闭dialog
   closed()
 }
 // 默认色值
-const mColor = ref('#00ff00')
+const mColor = ref(store.getters.mainColor)
 </script>
 
 <template>
@@ -38,6 +48,7 @@ const mColor = ref('#00ff00')
     v-model="dialogVisible"
     :model-value="modelValue"
     width="22%"
+    :title="$t('msg.universal.title')"
     @close="closed"
   >
     <div class="content">
@@ -58,4 +69,11 @@ const mColor = ref('#00ff00')
 
 <style lang="scss" scoped>
 /* 样式 */
+
+.content {
+  text-align: center;
+  .title {
+    margin-bottom: 12px;
+  }
+}
 </style>
