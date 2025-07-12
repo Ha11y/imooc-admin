@@ -1,12 +1,18 @@
 <template>
-  <div class="">个人信息</div>
-  <div class="example-pagination-block">
-    <div class="example-demonstration">When you have few pages</div>
-    <el-pagination layout="prev, pager, next" :total="50" />
-  </div>
-  <div class="example-pagination-block">
-    <div class="example-demonstration">When you have more than 7 pages</div>
-    <el-pagination layout="prev, pager, next" :total="1000" />
+  <div class="">main</div>
+  <div class="demo-pagination-block">
+    <div class="demonstration"></div>
+    <el-pagination
+      v-model:current-page="currentPage1"
+      :page-size="100"
+      :size="size"
+      :disabled="disabled"
+      :background="background"
+      layout="total, prev, pager, next"
+      :total="1000"
+      @size-change="handleSizeChange"
+      @current-change="handleCurrentChange"
+    />
   </div>
 </template>
 

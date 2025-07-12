@@ -1,5 +1,5 @@
 import { getItem, setItem } from '@/utils/storage'
-import { LANG } from '@/constant/index'
+import { LANG } from '@/constant'
 // import { get } from "core-js/core/dict"
 export default {
   namespaced: true,

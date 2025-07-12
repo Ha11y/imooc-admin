@@ -16,7 +16,7 @@ const privateRoutes = [
         name: 'userManage',
         component: () => import('@/views/user-manage/index.vue'),
         meta: {
-          title: '用户管理',
+          title: 'userManage',
           icon: 'personnel-manage'
         }
       },

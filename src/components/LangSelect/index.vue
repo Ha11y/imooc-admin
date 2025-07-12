@@ -3,10 +3,10 @@ import { useStore } from 'vuex'
 import SvgIcon from '../SvgIcon.vue'
 import { useI18n } from 'vue-i18n'
 import { ElMessage } from 'element-plus'
-import { defineProps } from 'vue'
+import { defineProps, computed } from 'vue'
 const store = useStore()
 const i18n = useI18n()
-defineProps({
+const props = defineProps({
   effect: {
     type: String,
     default: 'dark',
@@ -15,10 +15,17 @@ defineProps({
     }
   }
 })
+const language = computed(() => store.getters.language)
 const handleSetLanguage = (lang) => {
-  store.commit('app/setLanguage', lang)
+  // 切换 i18n 的方法
   i18n.locale.value = lang
-  ElMessage.success(`语言切换成功: ${lang === 'zh' ? '中文' : 'English'}`)
+  store.commit('app/setLanguage', lang)
+
+  ElMessage.success(
+    `${i18n.t('msg.toast.switchLangSuccess')}: ${
+      lang === 'zh' ? '中文' : 'English'
+    }`
+  )
 }
 </script>
 
@@ -29,20 +36,16 @@ const handleSetLanguage = (lang) => {
     @command="handleSetLanguage"
   >
     <div>
-      <el-tooltip content="国际化" :effect="effect">
+      <el-tooltip content="国际化" :effect="props.effect">
         <SvgIcon icon="language" />
       </el-tooltip>
     </div>
     <template #dropdown>
       <el-dropdown-menu>
-        <el-dropdown-item
-          :disabled="store.getters.language === 'zh'"
-          command="zh"
+        <el-dropdown-item :disabled="language === 'zh'" command="zh"
           >中文</el-dropdown-item
         >
-        <el-dropdown-item
-          :disabled="store.getters.language === 'en'"
-          command="en"
+        <el-dropdown-item :disabled="language === 'en'" command="en"
           >English</el-dropdown-item
         >
       </el-dropdown-menu>

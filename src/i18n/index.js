@@ -1,24 +1,29 @@
 import { createI18n } from 'vue-i18n'
-const locale = 'zh'
+// import '@/lang/index'
+import zhlocale from '@/lang/zh'
+import enlocale from '@/lang/en'
+import store from '@/store'
 const messages = {
   en: {
     msg: {
-      test: 'test'
+      ...enlocale
     }
   },
   zh: {
     msg: {
-      test: '测试'
+      ...zhlocale
     }
   }
 }
-
+function getLanguage() {
+  return store && store.getters && store.getters.language
+}
 const i18n = createI18n({
   // 使用composition API
   legacy: false,
   // 全局使用 t 函数
   globalInjection: true,
-  locale,
+  locale: getLanguage() || 'zh',
   messages
 })
 export default i18n

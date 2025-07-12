@@ -3,6 +3,7 @@
 import { watch, ref } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { useStore } from 'vuex'
+import { generateTitle } from '@/utils/i18n'
 // 生成数组数据
 const route = useRoute()
 const store = useStore()
@@ -37,11 +38,11 @@ const onLinkClick = (item) => {
       <el-breadcrumb-item v-for="(item, index) in breadCrumbData" :key="index">
         <!-- 不可点击项显示 -->
         <span class="no-redirect" v-if="index === breadCrumbData.length - 1">{{
-          item.meta.title
+          generateTitle(item.meta.title)
         }}</span>
         <!--可点击项显示  -->
         <span class="redirect" v-else @click.prevent="onLinkClick(item)">{{
-          item.meta.title
+          generateTitle(item.meta.title)
         }}</span>
       </el-breadcrumb-item>
     </transition-group>

@@ -7,7 +7,8 @@
       ref="loginFormRef"
     >
       <div class="title-container">
-        <h3 class="title">用户登录</h3>
+        <h3 class="title">{{ $t('msg.login.title') }}</h3>
+        <LangSelect class="lang-select" effect="light"></LangSelect>
       </div>
 
       <el-form-item prop="username">
@@ -40,8 +41,9 @@
         type="primary"
         style="width: 100%; margin-bottom: 30px"
         @click="handleLogin"
-        >登录</el-button
+        >{{ $t('msg.login.loginBtn') }}</el-button
       >
+      <div class="tip" v-html="$t('msg.login.desc')"></div>
     </el-form>
   </div>
 </template>
@@ -50,6 +52,7 @@
 // 导入组件之后无需注册可直接使用
 // import { Avatar } from '@element-plus/icons'
 // import { login } from '@/api/user'
+import LangSelect from '@/components/LangSelect'
 import SvgIcon from '@/components/SvgIcon.vue'
 import { ref } from 'vue'
 import { useStore } from 'vuex'
@@ -115,7 +118,18 @@ $cursor: #fff;
     padding: 160px 35px 0;
     margin: 0 auto;
     overflow: hidden;
-
+    .tip {
+      font-size: 15px;
+      line-height: 20px;
+      color: white;
+    }
+    ::v-deep .lang-select {
+      font-size: 26px;
+      position: absolute;
+      top: 0px;
+      right: 0px;
+      background-color: #fff;
+    }
     ::v-deep .el-form-item {
       border: 1px solid rgba(255, 255, 255, 0.1);
       background: rgba(0, 0, 0, 0.1);

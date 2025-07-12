@@ -1,15 +1,19 @@
+import i18n from '@/i18n'
+
 const validatePassword = () => (rule, value, callback) => {
-  if (!value) {
-    callback(new Error('密码不能为空'))
+  if (value.length < 6) {
+    callback(i18n.global.t('msg.login.passwordRule'))
   } else {
-    if (value.length < 6) {
-      callback(new Error('密码长度不能小于6'))
-    } else {
-      callback()
-    }
+    callback()
   }
 }
 export const loginRules = {
-  username: [{ required: true, message: '用户名不能为空', triggle: 'blur' }],
+  username: [
+    {
+      required: true,
+      message: i18n.global.t('msg.login.usernameRule'),
+      triggle: 'blur'
+    }
+  ],
   password: [{ required: true, triggle: 'blur', validator: validatePassword() }]
 }
