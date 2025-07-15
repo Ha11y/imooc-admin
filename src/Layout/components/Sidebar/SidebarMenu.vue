@@ -13,7 +13,7 @@ const routes = computed(() => {
   return generateMenu(filterRoutess)
 })
 // console.log(JSON.stringify(routes.value))
-console.log(routes.value)
+// console.log(routes.value)
 const route = useRoute()
 const activeMenu = computed(() => {
   const { path } = route
@@ -29,11 +29,15 @@ const activeMenu = computed(() => {
     :default-active="activeMenu"
     :background-color="$store.getters.cssVar.menuBg"
     :text-color="$store.getters.cssVar.menuText"
-    :active-text-color="$store.getters.cssVar.menuActionveText"
+    :active-text-color="$store.getters.cssVar.menuActiveText"
     router
   >
     <!-- 子集 menu 菜单 -->
-    <sidebar-item v-for="item in routes" :key="item.path" :route="item"></sidebar-item>
+    <sidebar-item
+      v-for="item in routes"
+      :key="item.path"
+      :route="item"
+    ></sidebar-item>
   </el-menu>
 </template>
 

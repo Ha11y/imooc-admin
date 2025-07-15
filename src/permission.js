@@ -6,7 +6,6 @@ router.beforeEach(async (to, from, next) => {
   // 规则一 ：已登录不能进入login页面
 
   if (store.getters.token) {
-    console.log(store.getters.token)
     if (to.path === '/login') {
       next('/')
     } else {

@@ -29,7 +29,7 @@ export default {
             router.push('/')
             setTiemStamp()
             // setItem(TOKEN, data.data.data.token)
-            console.log(data)
+            // console.log(data)
             resolve()
           })
           .catch((err) => {

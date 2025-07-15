@@ -81,7 +81,6 @@ const loginForm = ref({
 })
 const handleLogin = () => {
   loginFormRef.value.validate((valid) => {
-    console.log()
     if (!valid) return
     loading.value = true
     store

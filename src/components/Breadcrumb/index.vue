@@ -13,7 +13,6 @@ const getBreadcrumb = (route) => {
   breadCrumbData.value = route.matched.filter(
     (item) => item.meta && item.meta.title
   )
-  console.log(breadCrumbData, 'matched')
 }
 
 // 监听路由变化

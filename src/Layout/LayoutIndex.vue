@@ -2,7 +2,9 @@
 import SidebarIndex from '@/Layout/components/Sidebar/SidebarIndex.vue'
 import Navbar from '@/Layout/components/NavBar.vue'
 import AppMain from '@/Layout/components/AppMain.vue'
-import variables from '@/styles/variables.module.scss'
+import { useStore } from 'vuex'
+import TagsView from '@/Layout/components/TagsView'
+const store = useStore()
 </script>
 
 <template>
@@ -12,12 +14,14 @@ import variables from '@/styles/variables.module.scss'
   >
     <SidebarIndex
       class="sidebar-container"
-      :style="{ backgroundColor: variables.menuBg }"
+      :style="{ backgroundColor: store.getters.cssVar.menuBg }"
     ></SidebarIndex>
+    <div class="fixed-header">
+      <Navbar></Navbar>
+      <!-- tags -->
+      <TagsView></TagsView>
+    </div>
     <div class="main-container">
-      <div class="fixed-header">
-        <Navbar></Navbar>
-      </div>
       <AppMain></AppMain>
     </div>
   </div>
@@ -41,6 +45,7 @@ import variables from '@/styles/variables.module.scss'
   width: calc(100% - #{$sideBarWidth});
   transition: width #{$sdieBarDurations};
 }
+
 .hideSidebar .fixed-header {
   width: calc(100% - #{$hideSideBarWidth});
 }

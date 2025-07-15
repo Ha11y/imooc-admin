@@ -18,6 +18,7 @@ const messages = {
 function getLanguage() {
   return store && store.getters && store.getters.language
 }
+
 const i18n = createI18n({
   // 使用composition API
   legacy: false,
