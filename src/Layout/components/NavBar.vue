@@ -6,6 +6,7 @@ import LangSelect from '@/components/LangSelect/index.vue'
 import ThemeSelect from '@/components/ThemeSelect/index.vue'
 import Screenfull from '@/components/Screenfull/index.vue'
 import HeaderSearch from '@/components/HeaderSearch/index.vue'
+import Guide from '@/components/Guide/index.vue'
 const store = useStore()
 const logout = () => {
   store.dispatch('user/logout')
@@ -18,11 +19,12 @@ const logout = () => {
       <Hamburger class="hamburger-container"></Hamburger>
     </div>
     <div class="breadcrumb-container">
-      <Breadcrumb></Breadcrumb>
+      <Breadcrumb id="guide-breadcrumb"></Breadcrumb>
     </div>
 
     <div class="right-menu">
       <HeaderSearch class="right-menu-item hover-effect"></HeaderSearch>
+      <Guide class="right-menu-item hover-effect"></Guide>
       <Screenfull class="right-menu-item hover-effect"></Screenfull>
       <ThemeSelect class="right-menu-item hover-effect"></ThemeSelect>
       <LangSelect class="right-menu-item hover-effect"></LangSelect>

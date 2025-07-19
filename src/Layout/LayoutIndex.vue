@@ -13,13 +13,14 @@ const store = useStore()
     :class="[$store.getters.sidebarOpened ? 'openSidebar' : 'hideSidebar']"
   >
     <SidebarIndex
+      id="guide-sidebar"
       class="sidebar-container"
       :style="{ backgroundColor: store.getters.cssVar.menuBg }"
     ></SidebarIndex>
     <div class="fixed-header">
       <Navbar></Navbar>
       <!-- tags -->
-      <TagsView></TagsView>
+      <TagsView id="guide-tags"></TagsView>
     </div>
     <div class="main-container">
       <AppMain></AppMain>
@@ -49,6 +50,4 @@ const store = useStore()
 .hideSidebar .fixed-header {
   width: calc(100% - #{$hideSideBarWidth});
 }
-
-//
 </style>

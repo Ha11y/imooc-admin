@@ -17,7 +17,7 @@ const handleSetTheme = (theme) => {
   >
     <div>
       <el-tooltip :content="$t('msg.theme.themeChange')">
-        <SvgIcon icon="change-theme"></SvgIcon>
+        <SvgIcon id="guide-theme" icon="change-theme"></SvgIcon>
       </el-tooltip>
     </div>
     <template #dropdown>

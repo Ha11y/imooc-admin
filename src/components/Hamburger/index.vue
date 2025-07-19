@@ -15,7 +15,7 @@ const icon = computed(() => {
 
 <template>
   <div class="hamburger-container" @click="toggleClick">
-    <svg-icon class="hamburger" :icon="icon"></svg-icon>
+    <svg-icon id="guide-hamburger" class="hamburger" :icon="icon"></svg-icon>
   </div>
 </template>
 
