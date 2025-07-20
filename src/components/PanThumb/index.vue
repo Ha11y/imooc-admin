@@ -1,7 +1,7 @@
 <script setup>
 import { defineProps } from 'vue'
 defineProps({
-  iamge: {
+  image: {
     type: String
   },
   zIndex: {

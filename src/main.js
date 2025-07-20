@@ -7,11 +7,12 @@ import installIcons from '@/icons/index'
 import './permission'
 import i18n from './i18n/index'
 import element from '@/plugin/element'
-
+import installFilter from '@/filters/index'
 const app = createApp(App)
 app.use(store)
 app.use(router)
 app.use(i18n)
 installIcons(app)
+installFilter(app)
 element(app)
 app.mount('#app')
