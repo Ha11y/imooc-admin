@@ -8,3 +8,11 @@ export const getUserManageList = (data) => {
     params: data
   })
 }
+// 批量导入
+export const userBatchImport = (data) => {
+  return request({
+    url: '/user-manage/batch/import',
+    method: 'POST',
+    data
+  })
+}
