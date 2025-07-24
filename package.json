@@ -17,6 +17,7 @@
     "dayjs": "^1.11.13",
     "driver.js": "^0.9.8",
     "element-plus": "^2.10.3",
+    "file-saver": "^2.0.5",
     "fuse.js": "^6.6.2",
     "md5": "^2.3.0",
     "path-browserify": "^1.0.1",

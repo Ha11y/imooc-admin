@@ -22,3 +22,9 @@ export const deleteUser = (id) => {
     url: `/user-manage/delete/${id}`
   })
 }
+// 获取全部用户列表接口
+export const getUserManageAllList = () => {
+  return request({
+    url: '/user-manage/all-list'
+  })
+}
