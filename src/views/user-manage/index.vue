@@ -1,11 +1,13 @@
 <script setup>
-import { onActivated, ref } from 'vue'
+import { onActivated, ref, watch } from 'vue'
 import { getUserManageList, deleteUser } from '@/api/user-manage'
 import { watchSwitchLang } from '@/utils/i18n'
 import { useRouter } from 'vue-router'
 import { ElMessageBox, ElMessage } from 'element-plus'
 import { useI18n } from 'vue-i18n'
 import ExportToExcel from '@/views/user-manage/components/Export2Excel.vue'
+import roles from '@/views/user-manage/components/roles.vue'
+
 const userManageList = ref([])
 const page = ref(1)
 const size = ref(2)
@@ -61,10 +63,33 @@ const onToExcelClick = () => {
   console.log('onToExcelClick', exportToExcelVisible.value)
   console.log('test', test.value)
 }
+const onShowClick = (id) => {
+  router.push(`/user/info/${id}`)
+}
+const roleVisible = ref(false)
+const selectUerId = ref('')
+
+const onRoleClick = (row) => {
+  roleVisible.value = true
+  selectUerId.value = row._id
+}
+watch(
+  () => roleVisible.value,
+  (newVal) => {
+    if (!newVal) {
+      selectUerId.value = ''
+    }
+  }
+)
 </script>
 <template>
   <div>
     <ExportToExcel ref="test" v-model="exportToExcelVisible"></ExportToExcel>
+    <roles
+      v-model="roleVisible"
+      :userId="selectUerId"
+      @updateRole="getListData()"
+    ></roles>
     <el-card class="header">
       <div>
         <el-button type="primary" @click="onImportExcelClick">{{
@@ -115,10 +140,13 @@ const onToExcelClick = () => {
           width="260"
         >
           <template #default="{ row }">
-            <el-button type="primary" size="mini">{{
-              $t('msg.excel.show')
-            }}</el-button>
-            <el-button type="info" size="mini">{{
+            <el-button
+              type="primary"
+              size="mini"
+              @click="onShowClick(row._id)"
+              >{{ $t('msg.excel.show') }}</el-button
+            >
+            <el-button type="info" size="mini" @click="onRoleClick(row)">{{
               $t('msg.excel.showRole')
             }}</el-button>
             <el-button type="danger" size="mini" @click="onRemoveClick(row)">{{

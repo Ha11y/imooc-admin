@@ -52,6 +52,7 @@ const emits = defineEmits(['update:modelValue'])
 const onConfirm = async () => {
   loading.value = true
   const allUser = (await getUserManageAllList()).list
+  console.log('allUser', allUser)
   console.log(allUser)
   const excel = await import('@/utils/Export2Excel')
   const data = formatJson(USER_RELATIONS, allUser)
