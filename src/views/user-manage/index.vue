@@ -12,6 +12,7 @@ const size = ref(2)
 const total = ref(0)
 const tableData = ref([])
 const router = useRouter()
+const test = ref(null)
 const exportToExcelVisible = ref(false)
 const onImportExcelClick = () => {
   router.push('/user/import')
@@ -57,10 +58,13 @@ const onRemoveClick = (row) => {
 }
 const onToExcelClick = () => {
   exportToExcelVisible.value = true
+  console.log('onToExcelClick', exportToExcelVisible.value)
+  console.log('test', test.value)
 }
 </script>
 <template>
   <div>
+    <ExportToExcel ref="test" v-model="exportToExcelVisible"></ExportToExcel>
     <el-card class="header">
       <div>
         <el-button type="primary" @click="onImportExcelClick">{{
@@ -133,7 +137,6 @@ const onToExcelClick = () => {
         @current-change="handleCurrentChange"
       ></el-pagination>
     </el-card>
-    <export-to-excel v-model="exportToExcelVisible"></export-to-excel>
   </div>
 </template>
 
