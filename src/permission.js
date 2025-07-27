@@ -10,7 +10,21 @@ router.beforeEach(async (to, from, next) => {
       next('/')
     } else {
       if (!store.getters.hasUserInfo) {
-        await store.dispatch('user/getUserInfo')
+        const { permission } = await store.dispatch('user/getUserInfo')
+        console.log(permission, 'permission')
+        // 处理用户权限，筛选出需要添加的路由
+        const filterRoutes = await store.dispatch(
+          'permission/filterRoutes',
+          permission.menus
+        )
+        console.log(filterRoutes, 'filterRoutes')
+        // 利用 addRoute 循环添加
+        filterRoutes.forEach((item) => {
+          router.addRoute(item)
+        })
+        // 添加完动态路由之后，需要在进行一次主动跳转
+
+        return next(to.path)
       }
       next()
     }

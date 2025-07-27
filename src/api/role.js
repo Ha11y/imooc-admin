@@ -4,4 +4,3 @@ export const roleList = () => {
     url: '/role/list'
   })
 }
-// 获取所有权限

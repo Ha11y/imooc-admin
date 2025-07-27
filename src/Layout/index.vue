@@ -1,9 +1,9 @@
 <script setup>
-import SidebarIndex from '@/Layout/components/Sidebar/SidebarIndex.vue'
-import Navbar from '@/Layout/components/NavBar.vue'
-import AppMain from '@/Layout/components/AppMain.vue'
+import SidebarIndex from '@/layout/components/Sidebar/SidebarIndex.vue'
+import Navbar from '@/layout/components/NavBar.vue'
+import AppMain from '@/layout/components/AppMain.vue'
 import { useStore } from 'vuex'
-import TagsView from '@/Layout/components/TagsView'
+import TagsView from '@/layout/components/TagsView'
 const store = useStore()
 </script>
 
