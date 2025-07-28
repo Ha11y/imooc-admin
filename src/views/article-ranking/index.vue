@@ -52,16 +52,20 @@
 
 <script setup>
 import { onActivated, ref, onMounted } from 'vue'
-import { getArticleList } from '@/api/article'
+import { getArticleList, deleteArticle } from '@/api/article'
 import { watchSwitchLang } from '@/utils/i18n'
 import { dynamicData, selectDynamicLabel, tableColumns } from './dynamic'
 import { tableRef, initSortable } from './sortable'
+import { useRouter } from 'vue-router'
+import { ElMessage, ElMessageBox } from 'element-plus'
+import { useI18n } from 'vue-i18n'
 
+const i18n = useI18n()
 const page = ref(1)
 const size = ref(10)
 const tableData = ref([])
 const total = ref(0)
-
+const router = useRouter()
 onMounted(() => {
   initSortable(tableData, getListData)
 })
@@ -73,7 +77,9 @@ const getListData = async () => {
   tableData.value = result.list
   total.value = result.total
 }
-const onShowClick = (row) => {}
+const onShowClick = (row) => {
+  router.push(`/article/${row._id}`)
+}
 const handleCurrentChange = (currentPage) => {
   page.value = currentPage
   getListData()
@@ -85,6 +91,21 @@ const handleSizeChange = (currentSize) => {
 getListData()
 watchSwitchLang(getListData)
 onActivated(getListData)
+const onRemoveClick = async (row) => {
+  ElMessageBox.confirm(
+    i18n.t('msg.excel.dialogTitle1') +
+      row.title +
+      i18n.t('msg.excel.dialogTitle2'),
+    {
+      type: 'warning'
+    }
+  ).then(async () => {
+    await deleteArticle(row._id)
+    // 重新渲染数据
+    getListData()
+    ElMessage.success(i18n.t('msg.article.removeSuccess'))
+  })
+}
 </script>
 
 <style lang="scss" scoped>
