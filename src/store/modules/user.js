@@ -3,7 +3,7 @@ import md5 from 'md5'
 import { setItem, getItem, removeItem } from '@/utils/storage'
 import { TOKEN } from '@/constant'
 import { setTiemStamp } from '@/utils/auth'
-import router from '@/router'
+import router, { resetRouter } from '@/router/index'
 export default {
   namespaced: true,
   state: () => ({
@@ -43,6 +43,7 @@ export default {
       return res
     },
     async logout(context) {
+      resetRouter()
       this.commit('user/setToken', '')
       this.commit('user/setUserInfo', {})
       removeItem()

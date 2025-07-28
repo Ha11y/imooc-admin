@@ -43,6 +43,7 @@ watchSwitchLang(getRoleList)
             type="primary"
             size="mini"
             @click="onDistibutePermission(row)"
+            v-permission="['distributePermission']"
           >
             {{ $t('msg.role.assignPermissions') }}
           </el-button>
