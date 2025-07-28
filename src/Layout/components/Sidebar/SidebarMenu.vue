@@ -12,6 +12,7 @@ const routes = computed(() => {
   const filterRoutess = filterRoutes(router.getRoutes())
   return generateMenu(filterRoutess)
 })
+console.log('routes', routes.value)
 
 const route = useRoute()
 const activeMenu = computed(() => {
