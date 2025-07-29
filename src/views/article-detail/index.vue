@@ -19,11 +19,12 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { onActivated, ref } from 'vue'
 import { articleDetail } from '@/api/article'
 import { watchSwitchLang } from '@/utils/i18n'
-import { useRoute } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 const route = useRoute()
+const router = useRouter()
 const articleId = route.params.id
 const detail = ref({})
 // 获取文章详情数据
@@ -33,6 +34,10 @@ const getArticleDetail = async () => {
 }
 getArticleDetail()
 watchSwitchLang(getArticleDetail)
+const onEditClick = () => {
+  router.push(`/article/editor/${articleId}`)
+}
+onActivated(getArticleDetail)
 </script>
 
 <style lang="scss" scoped>
